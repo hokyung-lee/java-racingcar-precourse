@@ -13,4 +13,6 @@ public interface RacingCarView {
     void printStatus(List<GameStatus> status, Cars player);
 
     void printWinner(String winner);
+
+    void printError(String message);
 }

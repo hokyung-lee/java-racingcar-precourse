@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Game {
+    private static final String INVALID_TRY_COUNT = "시도 횟수는 숫자여야 한다.";
     private final Cars cars = new Cars();
     private final GameResult gameResult = new GameResult();
     public Game(String playerList) throws IllegalArgumentException{
@@ -18,11 +19,23 @@ public class Game {
         return cars;
     }
 
-    public GameResult run(int runCount) {
-        for (int i=0; i < runCount; i++) {
+    public GameResult run(String runCount) throws IllegalArgumentException{
+        int convertRunCount = ConvertIntegerRunCount(runCount);
+        for (int i=0; i < convertRunCount; i++) {
             executeGame();
         }
         return gameResult;
+    }
+
+    private int ConvertIntegerRunCount(String runCount) {
+        int result = 0;
+        try {
+            result = Integer.parseInt(runCount);;
+        } catch (NumberFormatException ex) {
+            throw new IllegalArgumentException(INVALID_TRY_COUNT);
+        }
+
+        return result;
     }
 
     private void executeGame() {

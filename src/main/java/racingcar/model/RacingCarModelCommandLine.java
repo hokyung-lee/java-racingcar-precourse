@@ -13,12 +13,12 @@ public class RacingCarModelCommandLine implements RacingCarModel {
     private Game game;
     private GameResult gameResult;
     @Override
-    public void init(String playerName) {
+    public void init(String playerName) throws IllegalArgumentException {
         game = new Game(playerName);
     }
 
     @Override
-    public void run(int tryCount) {
+    public void run(String tryCount) throws IllegalArgumentException {
         gameResult = game.run(tryCount);
     }
 
@@ -34,5 +34,15 @@ public class RacingCarModelCommandLine implements RacingCarModel {
     @Override
     public String getWinner() {
         return game.getWinner();
+    }
+
+    @Override
+    public boolean isValidGame() {
+        return game != null;
+    }
+
+    @Override
+    public boolean isValidTry() {
+        return gameResult != null;
     }
 }

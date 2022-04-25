@@ -34,7 +34,7 @@ public class GameTest {
     @Test
     void runGame() {
         Game game = new Game("pobi,woni,woo");
-        GameResult gameResult = game.run(5);
+        GameResult gameResult = game.run("5");
 
         assertThat(gameResult.totalExecuteCount()).isEqualTo(5);
     }

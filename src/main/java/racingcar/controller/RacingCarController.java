@@ -18,18 +18,32 @@ public class RacingCarController {
     }
 
     private void init() {
-        String playerName = getInputCarName();
-        int tryCount = getInputTryCount();
-
-        play(playerName, tryCount);
+        while(!racingCarModel.isValidGame()) {
+            String playerName = getInputCarName();
+            newGame(playerName);
+        }
+        while(!racingCarModel.isValidTry()) {
+            String tryCount = getInputTryCount();
+            play(tryCount);
+        }
         printResult();
     }
 
-    private void play(String playerName, int tryCount) {
-        racingCarModel.init(playerName);
-        racingCarModel.run(tryCount);
+    private void newGame(String playerName) {
+        try {
+            racingCarModel.init(playerName);
+        } catch (IllegalArgumentException ex) {
+            racingCarView.printError(ex.getMessage());
+        }
     }
 
+    private void play(String tryCount) {
+        try {
+            racingCarModel.run(tryCount);
+        } catch (IllegalArgumentException ex) {
+            racingCarView.printError(ex.getMessage());
+        }
+    }
 
     private String getInputCarName() {
         racingCarView.printInputCarName();
@@ -37,9 +51,9 @@ public class RacingCarController {
         return playerName;
     }
 
-    private int getInputTryCount() {
+    private String getInputTryCount() {
         racingCarView.printInputRunCount();
-        int tryCount = Integer.parseInt(Console.readLine());
+        String tryCount = Console.readLine();
         return tryCount;
     }
 

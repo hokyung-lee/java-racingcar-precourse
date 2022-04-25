@@ -11,6 +11,7 @@ public class RacingCarViewCommand implements RacingCarView {
     private static final String EXECUTION_RESULT = "실행 결과";
     private static final String RESULT_DELIMITER = " : ";
     private static final String FINAL_WINNER = "최종 우승자: ";
+    private static final String ERROR_PREFIX_MESSAGE = "[ERROR] ";
 
     @Override
     public void printInputCarName() {
@@ -63,6 +64,12 @@ public class RacingCarViewCommand implements RacingCarView {
     public void printWinner(String winner) {
         System.out.print(FINAL_WINNER + winner);
     }
+
+    @Override
+    public void printError(String message) {
+        System.out.println(ERROR_PREFIX_MESSAGE + message);
+    }
+
     private void printNewLine() {
         System.out.println();
     }
