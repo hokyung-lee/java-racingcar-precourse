@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import racingcar.model.RacingCarModel;
 import racingcar.view.RacingCarView;
 
@@ -17,5 +18,10 @@ public class RacingCarController {
     }
 
     private void init() {
+        racingCarView.printInputCarName();
+        String playerName = Console.readLine();
+        racingCarView.printInputRunCount();
+        int tryCount = Integer.parseInt(Console.readLine());
+
     }
 }
