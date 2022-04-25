@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.Game;
+import racingcar.domain.GameResult;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -24,5 +25,14 @@ public class GameTest {
         assertThatThrownBy(() -> {
             new Game("pobi,woni,name_exceed5");
         }).isInstanceOf(IllegalArgumentException.class).hasMessage("자동차 이름은 5글자를 초과할 수 없습니다.");
+    }
+
+    @DisplayName("게임 실행 테스트")
+    @Test
+    void runGame() {
+        Game game = new Game("pobi,woni,woo");
+        GameResult gameResult = game.run(5);
+
+        assertThat(gameResult.totalExecuteCount()).isEqualTo(5);
     }
 }
