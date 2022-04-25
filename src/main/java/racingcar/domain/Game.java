@@ -38,4 +38,23 @@ public class Game {
     public GameResult gameResult() {
         return gameResult;
     }
+
+    public String getWinner() {
+        int finalMaxPosition = gameResult.getGameResult().get(gameResult.totalExecuteCount()-1).getMaxPosition();
+        List<String> result = new ArrayList<>();
+        for (Car car : cars.carList()) {
+            findWinner(finalMaxPosition, result, car);
+        }
+        return generateWinnerName(result);
+    }
+
+    private String generateWinnerName(List<String> result) {
+        return String.join(",", result);
+    }
+
+    private void findWinner(int finalMaxPosition, List<String> result, Car car) {
+        if (car.getPosition() == finalMaxPosition) {
+            result.add(car.getCarName());
+        }
+    }
 }
