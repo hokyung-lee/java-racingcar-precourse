@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.NumberStrategy;
 import racingcar.model.Car;
@@ -27,6 +28,16 @@ public class CarTest {
         assertThatThrownBy(() -> {
             new Car(input);
         }).isInstanceOf(IllegalArgumentException.class).hasMessage("자동차 이름은 5글자를 초과할 수 없습니다.");
+    }
+
+    @DisplayName("자동차 이름 공백 생성 테스트")
+    @ParameterizedTest
+    @NullSource
+    @ValueSource(strings = {"", " "})
+    void makeCarWithEmpty(String input) {
+        assertThatThrownBy(() -> {
+            new Car(input);
+        }).isInstanceOf(IllegalArgumentException.class).hasMessage("자동차 이름은 1글자 이상이어야 합니다.");
     }
 
     @DisplayName("자동차 전진 테스트")
