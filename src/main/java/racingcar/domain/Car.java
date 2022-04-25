@@ -3,34 +3,26 @@ package racingcar.domain;
 import racingcar.domain.NumberStrategy;
 
 public class Car {
-    private final static String INVALID_CAR_NAME = "자동차 이름은 5글자를 초과할 수 없습니다.";
-    private final static String INVALID_CAR_NAME_EMPTY = "자동차 이름은 1글자 이상이어야 합니다.";
-    private final static int MAX_CAR_NAME_SIZE = 5;
+
     private final static int NUMBER_FOR_MOVE = 4;
 
-    private final String name;
-    private int position;
-    public Car(String name) {
-        if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException(INVALID_CAR_NAME_EMPTY);
-        }
-        if (name.length() > MAX_CAR_NAME_SIZE) {
-            throw new IllegalArgumentException(INVALID_CAR_NAME);
-        }
-        this.name = name;
-        this.position = 0;
+    private final CarName carName;
+    private final CarPosition carPosition;
+    public Car(String name) throws IllegalArgumentException {
+        carName = new CarName(name);
+        carPosition = new CarPosition();
     }
 
     public String getCarName() {
-        return name;
+        return carName.toString();
     }
 
     public void moveForward() {
-        this.position += 1;
+        carPosition.forwardPosition();
     }
 
     public int getPosition() {
-        return position;
+        return carPosition.currentPosition();
     }
 
     public void moveOrStop(NumberStrategy numberStrategy) {
