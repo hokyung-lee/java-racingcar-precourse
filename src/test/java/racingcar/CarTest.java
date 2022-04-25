@@ -6,10 +6,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.domain.NumberStrategy;
 import racingcar.model.Car;
+import racingcar.model.Cars;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
@@ -58,5 +59,17 @@ public class CarTest {
         car.moveOrStop(() -> Integer.parseInt(input));
 
         assertThat(car.getPosition()).isEqualTo(Integer.parseInt(expected));
+    }
+
+    @DisplayName("n대 자동차 생성")
+    @Test
+    void makeCars() {
+        Cars cars = new Cars();
+        cars.addCar(new Car("test"));
+        cars.addCar(new Car("test1"));
+        cars.addCar(new Car("test2"));
+        cars.addCar(new Car("test3"));
+
+        assertThat(cars.totalCar()).isEqualTo(4);
     }
 }
