@@ -24,5 +24,6 @@ public class RacingCarController {
         int tryCount = Integer.parseInt(Console.readLine());
 
         racingCarModel.init(playerName);
+        racingCarModel.run(tryCount);
     }
 }
