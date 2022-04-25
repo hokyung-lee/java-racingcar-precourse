@@ -1,6 +1,8 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class Game {
     private final Cars cars = new Cars();
@@ -24,6 +26,16 @@ public class Game {
     }
 
     private void executeGame() {
-        gameResult.addExecutionCount();
+        List<Car> carList = cars.carList();
+        List<Integer> gameStatus = new ArrayList<>();
+        for (Car car : carList) {
+            car.moveOrStop(new RandomNumberStrategy());
+            gameStatus.add(car.getPosition());
+        }
+        gameResult.addStatus(new GameStatus(gameStatus));
+    }
+
+    public GameResult gameResult() {
+        return gameResult;
     }
 }

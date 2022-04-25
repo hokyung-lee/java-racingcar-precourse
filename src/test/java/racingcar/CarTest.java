@@ -70,6 +70,6 @@ public class CarTest {
         cars.addCar(new Car("test2"));
         cars.addCar(new Car("test3"));
 
-        assertThat(cars.totalCar()).isEqualTo(4);
+        assertThat(cars.carList().size()).isEqualTo(4);
     }
 }

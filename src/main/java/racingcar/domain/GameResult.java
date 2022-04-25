@@ -1,13 +1,23 @@
 package racingcar.domain;
 
-public class GameResult {
-    private int executeCount = 0;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-    public void addExecutionCount() {
-        executeCount += 1;
-    }
+public class GameResult {
+    List<GameStatus> status = new ArrayList<>();
+    private int executeCount = 0;
 
     public int totalExecuteCount() {
         return executeCount;
+    }
+
+    public void addStatus(GameStatus gameStatus) {
+        this.executeCount += 1;
+        this.status.add(gameStatus);
+    }
+
+    public List<GameStatus> getGameResult() {
+        return Collections.unmodifiableList(status);
     }
 }

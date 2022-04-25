@@ -12,7 +12,7 @@ public class Cars {
         this.cars.add(car);
     }
 
-    public int totalCar() {
-        return cars.size();
+    public List<Car> carList() {
+        return cars;
     }
 }
