@@ -6,14 +6,12 @@ import java.util.List;
 
 public class GameResult {
     List<GameStatus> status = new ArrayList<>();
-    private int executeCount = 0;
 
     public int totalExecuteCount() {
-        return executeCount;
+        return status.size();
     }
 
     public void addStatus(GameStatus gameStatus) {
-        this.executeCount += 1;
         this.status.add(gameStatus);
     }
 
