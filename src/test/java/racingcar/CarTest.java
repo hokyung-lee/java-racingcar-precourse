@@ -3,7 +3,9 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.domain.NumberStrategy;
 import racingcar.model.Car;
 
 import static org.assertj.core.api.Assertions.*;
@@ -33,6 +35,17 @@ public class CarTest {
         Car car = new Car("test");
         car.moveForward();
         car.moveForward();
+
         assertThat(car.getPosition()).isEqualTo(2);
+    }
+
+    @DisplayName("자동차 전진 또는 멈춤 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"0:0", "1:0", "2:0", "3:0", "4:1", "5:1", "6:1", "7:1", "8:1", "9:1"}, delimiter = ':')
+    void moveOrStop(String input, String expected) {
+        Car car = new Car("test");
+        car.moveOrStop(() -> Integer.parseInt(input));
+
+        assertThat(car.getPosition()).isEqualTo(Integer.parseInt(expected));
     }
 }

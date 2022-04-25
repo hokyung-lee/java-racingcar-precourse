@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.domain.NumberStrategy;
+
 public class Car {
     private final static String INVALID_CAR_NAME = "자동차 이름은 5글자를 초과할 수 없습니다.";
     private final String name;
@@ -22,5 +24,11 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public void moveOrStop(NumberStrategy numberStrategy) {
+        if (numberStrategy.generateNumber() >= 4) {
+            moveForward();
+        }
     }
 }
