@@ -8,6 +8,7 @@ public class Game {
     private static final String INVALID_TRY_COUNT = "시도 횟수는 숫자여야 한다.";
     private final Cars cars = new Cars();
     private final GameResult gameResult = new GameResult();
+
     public Game(String playerList) throws IllegalArgumentException{
         String[] players = playerList.split(",");
         for (String player : players) {
@@ -25,17 +26,6 @@ public class Game {
             executeGame();
         }
         return gameResult;
-    }
-
-    private int ConvertIntegerRunCount(String runCount) {
-        int result = 0;
-        try {
-            result = Integer.parseInt(runCount);;
-        } catch (NumberFormatException ex) {
-            throw new IllegalArgumentException(INVALID_TRY_COUNT);
-        }
-
-        return result;
     }
 
     private void executeGame() {
@@ -61,13 +51,24 @@ public class Game {
         return generateWinnerName(result);
     }
 
-    private String generateWinnerName(List<String> result) {
-        return String.join(",", result);
-    }
-
     private void findWinner(int finalMaxPosition, List<String> result, Car car) {
         if (car.getPosition() == finalMaxPosition) {
             result.add(car.getCarName());
         }
+    }
+
+    private String generateWinnerName(List<String> result) {
+        return String.join(",", result);
+    }
+
+    private int ConvertIntegerRunCount(String runCount) {
+        int result = 0;
+        try {
+            result = Integer.parseInt(runCount);;
+        } catch (NumberFormatException ex) {
+            throw new IllegalArgumentException(INVALID_TRY_COUNT);
+        }
+
+        return result;
     }
 }

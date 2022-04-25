@@ -3,6 +3,7 @@ package racingcar.domain;
 import racingcar.domain.Car;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -13,6 +14,6 @@ public class Cars {
     }
 
     public List<Car> carList() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 }

@@ -5,6 +5,7 @@ public class CarName {
     private final static String INVALID_CAR_NAME_EMPTY = "자동차 이름은 1글자 이상이어야 합니다.";
     private final static int MAX_CAR_NAME_SIZE = 5;
     private final String name;
+
     public CarName(String name) {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException(INVALID_CAR_NAME_EMPTY);
