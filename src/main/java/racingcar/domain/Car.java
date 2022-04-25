@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 public class Car {
-    private final static int NUMBER_FOR_MOVE = 4;
+    private static final int NUMBER_FOR_MOVE = 4;
     private final CarName carName;
     private final CarPosition carPosition;
 

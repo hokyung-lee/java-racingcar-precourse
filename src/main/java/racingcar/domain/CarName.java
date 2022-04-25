@@ -1,9 +1,9 @@
 package racingcar.domain;
 
 public class CarName {
-    private final static String INVALID_CAR_NAME = "자동차 이름은 5글자를 초과할 수 없습니다.";
-    private final static String INVALID_CAR_NAME_EMPTY = "자동차 이름은 1글자 이상이어야 합니다.";
-    private final static int MAX_CAR_NAME_SIZE = 5;
+    private static final String INVALID_CAR_NAME = "자동차 이름은 5글자를 초과할 수 없습니다.";
+    private static final String INVALID_CAR_NAME_EMPTY = "자동차 이름은 1글자 이상이어야 합니다.";
+    private static final int MAX_CAR_NAME_SIZE = 5;
     private final String name;
 
     public CarName(String name) {
