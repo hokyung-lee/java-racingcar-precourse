@@ -23,5 +23,6 @@ public class RacingCarController {
         racingCarView.printInputRunCount();
         int tryCount = Integer.parseInt(Console.readLine());
 
+        racingCarModel.init(playerName);
     }
 }
